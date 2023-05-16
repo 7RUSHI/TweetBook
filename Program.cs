@@ -1,20 +1,13 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.Swagger;
+using TweetBook.Installers;
 using TweetBook.Options;
 using SwaggerOptions = TweetBook.Options.SwaggerOptions;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-
-builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen(option => {
-    option.SwaggerDoc("v1", new OpenApiInfo { Title = "TweekBook API Title" });
-});
-
+builder.Services.InstallServicesInAssembly(builder.Configuration);
 
 var app = builder.Build();
 
