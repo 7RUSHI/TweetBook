@@ -1,4 +1,5 @@
 ﻿using Microsoft.OpenApi.Models;
+using TweetBook.Services;
 
 namespace TweetBook.Installers;
 public class MvcInstaller : IInstaller {
@@ -9,5 +10,6 @@ public class MvcInstaller : IInstaller {
         services.AddSwaggerGen(option => {
             option.SwaggerDoc("v1", new OpenApiInfo { Title = "TweekBook API Title" });
         });
+        services.AddSingleton<IPostService, PostService>();
     }
 }

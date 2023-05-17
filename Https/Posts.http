@@ -1,0 +1,18 @@
+@postId = d37cdd99-50ea-4359-8aaf-cf9a43a74bc8
+#Get All Posts
+GET https://localhost:7277/api/v1/posts
+
+###
+
+#Get By Id
+GET https://localhost:7277/api/v1/posts/{{postId}}
+
+###
+
+#Cread Post
+POST https://localhost:7277/api/v1/posts
+Content-Type: application/json
+
+{
+    "name":"Post Item 1"
+}
