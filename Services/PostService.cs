@@ -20,5 +20,14 @@ namespace TweetBook.Services {
             posts.Add(post);
             return true;
         }
+
+        public bool UpdatePost(Post post) {
+            var index = posts.FindIndex(p => p.Id == post.Id);
+            if (index == -1)
+                return false;
+            posts[index] = post;
+            return true;
+
+        }
     }
 }

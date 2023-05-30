@@ -18,7 +18,7 @@ public class PostsController : ControllerBase {
     }
 
     [HttpGet(ApiRoutes.Posts.GetAll)]
-    public IActionResult GetPosts() {
+    public IActionResult GetAll() {
         return Ok(_postService.GetPosts());
     }
     [HttpGet(ApiRoutes.Posts.Get)]
@@ -40,5 +40,13 @@ public class PostsController : ControllerBase {
         var locationUrl = baseUrl + "/" + ApiRoutes.Posts.Get.Replace("{postId}", post.Id.ToString());
         var response = new PostResponse { Id = post.Id, Name = post.Name };
         return Created(locationUrl, response);
+    }
+
+    [HttpPut(ApiRoutes.Posts.Update)]
+    public IActionResult Update([FromRoute] Guid postId, [FromBody] UpdatePostRequest postRequest) {
+        var post = new Post { Id = postId, Name = postRequest.Name };
+        if (_postService.UpdatePost(post))
+            return Ok();
+        return NotFound();
     }
 }

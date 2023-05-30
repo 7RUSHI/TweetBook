@@ -9,10 +9,19 @@ GET https://localhost:7277/api/v1/posts/{{postId}}
 
 ###
 
-#Cread Post
+#Create Post
 POST https://localhost:7277/api/v1/posts
 Content-Type: application/json
 
 {
-    "name":"Post Item 1"
+    "name":"Post Item 4"
+}
+
+###
+
+PUT https://localhost:7277/api/v1/posts/71cb83f5-d893-4655-8c83-1e38a9573fb3
+Content-Type: application/json
+
+{
+  "name":"Post Item 3"
 }
